@@ -1,5 +1,7 @@
 import advent
+import time
 
+start_time = time.time()
 inputs = advent.get_input(5).split("\n\n")
 answer = 0
 seeds = [int(seed) for seed in inputs[0].split(" ")[1:]]
@@ -34,8 +36,6 @@ success = False
 location = 0
 while not success:
     location += 1
-    if location % 1000 == 0:
-        print(location, "to be tested")
     candidate = location
     for map in reversed(maps):
         for row in map:
@@ -50,3 +50,4 @@ while not success:
 
 
 advent.clip(answer)
+print("--- %s seconds ---" % (time.time() - start_time))
